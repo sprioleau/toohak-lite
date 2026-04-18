@@ -1,4 +1,4 @@
-// Sound Manager for Stewardship5
+// Sound Manager for toohak-lite
 // Handles lobby music, countdown ticks, and sound effects
 
 type SoundType = 'lobby' | 'tick' | 'submitted' | 'reveal' | 'countdown';

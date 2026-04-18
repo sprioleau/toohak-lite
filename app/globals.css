@@ -3,7 +3,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Stewardship5 - Dark Linear-style Theme */
+/* toohak-lite - Dark Linear-style Theme */
 :root {
   --background: oklch(0.08 0 0);
   --foreground: oklch(0.98 0 0);
@@ -44,7 +44,7 @@
   --sidebar-border: oklch(0.22 0 0);
   --sidebar-ring: oklch(0.65 0.2 265);
   
-  /* Custom Stewardship5 tokens */
+  /* Custom tokens */
   --indigo: oklch(0.65 0.2 265);
   --indigo-glow: oklch(0.65 0.2 265 / 0.4);
   --surface-1: oklch(0.1 0 0);
@@ -78,7 +78,6 @@
 @theme inline {
   --font-sans: var(--font-inter), 'Inter', system-ui, sans-serif;
   --font-mono: 'Geist Mono', 'Geist Mono Fallback', monospace;
-  --font-dancing: var(--font-dancing), 'Dancing Script', cursive;
   --font-funnel: var(--font-funnel), 'Funnel Display', sans-serif;
   
   --color-background: var(--background);
@@ -135,11 +134,7 @@
   }
 }
 
-/* Custom font classes */
-.font-dancing {
-  font-family: var(--font-dancing), 'Dancing Script', cursive;
-}
-
+/* Custom font class */
 .font-funnel {
   font-family: var(--font-funnel), 'Funnel Display', sans-serif;
 }

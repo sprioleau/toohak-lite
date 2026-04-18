@@ -3,16 +3,19 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 import { useSocket } from '@/lib/socket-context';
 import { RoomCodeDisplay } from '@/components/game/room-code-display';
 import { AnimalGrid } from '@/components/game/animal-grid';
 import { QuestionCard } from '@/components/game/question-card';
 import { Timer } from '@/components/game/timer';
 import { PlayerStatusList } from '@/components/game/player-status-list';
+import { GameCard } from '@/components/game/game-card';
 import { Button } from '@/components/ui/button';
-import { Play, Users, Loader2 } from 'lucide-react';
+import { AVAILABLE_GAMES, getGameById } from '@/lib/questions';
+import { Play, Users, Loader2, ArrowLeft } from 'lucide-react';
 
-const QUESTION_DURATION = 15; // seconds
+type HostPhase = 'select-game' | 'lobby' | 'playing';
 
 export default function HostPage() {
   const router = useRouter();
@@ -29,14 +32,32 @@ export default function HostPage() {
     error,
   } = useSocket();
 
+  const [hostPhase, setHostPhase] = useState<HostPhase>('select-game');
+  const [selectedGameId, setSelectedGameId] = useState<string | null>(null);
   const [timerKey, setTimerKey] = useState(0);
 
-  // Create room on mount
+  const selectedGame = selectedGameId ? getGameById(selectedGameId) : null;
+  const questionDuration = selectedGame?.timePerQuestion ?? 45;
+
+  // Handle game selection
+  const handleSelectGame = useCallback((gameId: string) => {
+    setSelectedGameId(gameId);
+    setHostPhase('lobby');
+  }, []);
+
+  // Create room when entering lobby phase
   useEffect(() => {
-    if (isConnected && !roomCode) {
+    if (isConnected && hostPhase === 'lobby' && !roomCode) {
       createRoom();
     }
-  }, [isConnected, roomCode, createRoom]);
+  }, [isConnected, hostPhase, roomCode, createRoom]);
+
+  // Sync hostPhase with gameState
+  useEffect(() => {
+    if (gameState === 'playing') {
+      setHostPhase('playing');
+    }
+  }, [gameState]);
 
   // Reset timer when question changes
   useEffect(() => {
@@ -54,7 +75,7 @@ export default function HostPage() {
     forceNextQuestion();
   }, [forceNextQuestion]);
 
-  if (!isConnected) {
+  if (!isConnected && hostPhase !== 'select-game') {
     return (
       <main className="min-h-screen flex items-center justify-center p-6">
         <div className="flex items-center gap-3 text-muted-foreground">
@@ -78,8 +99,48 @@ export default function HostPage() {
     );
   }
 
+  // GAME SELECTION VIEW
+  if (hostPhase === 'select-game') {
+    return (
+      <main className="min-h-screen flex flex-col p-6 sm:p-10">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="flex-1 flex flex-col max-w-2xl mx-auto w-full"
+        >
+          {/* Back Button */}
+          <Link href="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-8 text-sm">
+            <ArrowLeft className="w-4 h-4" />
+            Back
+          </Link>
+
+          {/* Header */}
+          <div className="text-center mb-10">
+            <h1 className="font-funnel text-4xl sm:text-5xl text-foreground mb-2">
+              Select a Game
+            </h1>
+            <p className="text-muted-foreground text-sm">
+              Choose a quiz to host
+            </p>
+          </div>
+
+          {/* Game Cards */}
+          <div className="flex flex-col gap-4">
+            {AVAILABLE_GAMES.map((game) => (
+              <GameCard
+                key={game.id}
+                game={game}
+                onSelect={handleSelectGame}
+              />
+            ))}
+          </div>
+        </motion.div>
+      </main>
+    );
+  }
+
   // LOBBY VIEW
-  if (gameState === 'lobby' && roomCode) {
+  if (hostPhase === 'lobby' && roomCode) {
     return (
       <main className="min-h-screen flex flex-col p-6 sm:p-10">
         <motion.div
@@ -89,11 +150,11 @@ export default function HostPage() {
         >
           {/* Header */}
           <div className="text-center mb-8">
-            <h1 className="font-dancing text-4xl sm:text-5xl text-primary mb-2">
-              Stewardship5
+            <h1 className="font-funnel text-4xl sm:text-5xl text-primary mb-2">
+              {selectedGame?.name}
             </h1>
             <p className="text-muted-foreground text-sm">
-              Join at this URL with the code below
+              {selectedGame?.description}
             </p>
           </div>
 
@@ -121,7 +182,7 @@ export default function HostPage() {
           </div>
 
           {/* Start Button */}
-          <div className="flex justify-center">
+          <div className="flex justify-center relative">
             <Button
               size="lg"
               onClick={startGame}
@@ -143,7 +204,7 @@ export default function HostPage() {
   }
 
   // PLAYING VIEW
-  if (gameState === 'playing') {
+  if (hostPhase === 'playing') {
     return (
       <main className="min-h-screen flex flex-col p-6 sm:p-10">
         <AnimatePresence mode="wait">
@@ -157,7 +218,7 @@ export default function HostPage() {
             {/* Timer */}
             <div className="flex justify-center mb-8">
               <Timer
-                duration={QUESTION_DURATION}
+                duration={questionDuration}
                 onComplete={handleTimerComplete}
                 isRunning={true}
                 resetKey={timerKey}

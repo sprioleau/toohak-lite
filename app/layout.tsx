@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter, Dancing_Script, Funnel_Display } from 'next/font/google'
+import { Inter, Funnel_Display } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
@@ -8,19 +8,14 @@ const inter = Inter({
   variable: '--font-inter',
 })
 
-const dancingScript = Dancing_Script({ 
-  subsets: ['latin'],
-  variable: '--font-dancing',
-})
-
 const funnelDisplay = Funnel_Display({ 
   subsets: ['latin'],
   variable: '--font-funnel',
 })
 
 export const metadata: Metadata = {
-  title: 'Stewardship5 - The 5 T\'s Self-Evaluation',
-  description: 'A real-time self-evaluation app for assessing your stewardship in Time, Talent, Treasure, Temple, and Testimony.',
+  title: 'toohak-lite',
+  description: 'A real-time self-evaluation app for group quizzes and assessments.',
   generator: 'v0.app',
   icons: {
     icon: [
@@ -56,7 +51,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark bg-background">
-      <body className={`${inter.variable} ${dancingScript.variable} ${funnelDisplay.variable} font-sans antialiased min-h-screen`}>
+      <body className={`${inter.variable} ${funnelDisplay.variable} font-sans antialiased min-h-screen`}>
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

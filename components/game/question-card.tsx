@@ -42,7 +42,7 @@ export function QuestionCard({ questionIndex, showProgress = true }: QuestionCar
       )}
 
       <motion.h1
-        className="font-dancing text-5xl sm:text-7xl text-primary mb-4"
+        className="font-funnel text-5xl sm:text-7xl text-primary mb-4"
         initial={{ scale: 0.9 }}
         animate={{ scale: 1 }}
         transition={{ type: 'spring', stiffness: 200 }}

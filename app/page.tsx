@@ -18,37 +18,19 @@ export default function HomePage() {
       >
         {/* Title */}
         <motion.h1 
-          className="font-dancing text-6xl sm:text-8xl text-primary mb-4"
+          className="font-funnel text-6xl sm:text-8xl text-primary mb-12"
           initial={{ scale: 0.9 }}
           animate={{ scale: 1 }}
           transition={{ delay: 0.2, type: 'spring' }}
         >
-          Stewardship5
+          toohak-lite
         </motion.h1>
-        
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
-          className="text-muted-foreground text-lg sm:text-xl mb-2 font-funnel"
-        >
-          The 5 T&apos;s Self-Evaluation
-        </motion.p>
-        
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-          className="text-muted-foreground/70 text-sm sm:text-base mb-12 max-w-md"
-        >
-          Assess your stewardship in Time, Talent, Treasure, Temple, and Testimony
-        </motion.p>
 
         {/* Role Selection */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
+          transition={{ delay: 0.4 }}
           className="flex flex-col sm:flex-row gap-4 w-full max-w-md"
         >
           <Link href="/host" className="flex-1">
@@ -77,21 +59,6 @@ export default function HomePage() {
               </span>
             </Button>
           </Link>
-        </motion.div>
-
-        {/* Footer */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.7 }}
-          className="mt-16 text-center"
-        >
-          <p className="text-xs text-muted-foreground/50 italic">
-            {'"'}Each of you should use whatever gift you have received to serve others{'"'}
-          </p>
-          <p className="text-xs text-muted-foreground/40 mt-1">
-            — 1 Peter 4:10
-          </p>
         </motion.div>
       </motion.div>
     </main>
