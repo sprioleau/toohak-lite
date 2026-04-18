@@ -72,12 +72,12 @@ export default function PlayResultsPage() {
           <motion.h1
             initial={{ scale: 0.9 }}
             animate={{ scale: 1 }}
-            className="font-dancing text-4xl text-primary mb-2"
+            className="font-funnel text-4xl text-primary mb-2"
           >
             Your Results
           </motion.h1>
           <p className="text-muted-foreground text-sm">
-            Stewardship evaluation complete
+            Evaluation complete
           </p>
         </div>
 

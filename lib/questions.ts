@@ -6,6 +6,14 @@ export interface Question {
   description: string;
 }
 
+export interface Game {
+  id: string;
+  name: string;
+  description: string;
+  questions: Question[];
+  timePerQuestion: number; // in seconds
+}
+
 export const THE_FIVE_TS: Question[] = [
   {
     id: 'time',
@@ -43,3 +51,18 @@ export const THE_FIVE_TS: Question[] = [
     description: 'Sharing your faith and the story of God\'s goodness to influence others for Christ.',
   },
 ];
+
+// Available games
+export const AVAILABLE_GAMES: Game[] = [
+  {
+    id: 'five-ts-stewardship',
+    name: "5 T's of Stewardship",
+    description: 'Assess your stewardship in Time, Talent, Treasure, Temple, and Testimony',
+    questions: THE_FIVE_TS,
+    timePerQuestion: 45,
+  },
+];
+
+export function getGameById(id: string): Game | undefined {
+  return AVAILABLE_GAMES.find(game => game.id === id);
+}

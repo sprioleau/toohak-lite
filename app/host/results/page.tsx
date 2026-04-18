@@ -61,11 +61,11 @@ export default function HostResultsPage() {
         {/* Header */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
           <div className="text-center sm:text-left">
-            <h1 className="font-dancing text-4xl sm:text-5xl text-primary mb-1">
+            <h1 className="font-funnel text-4xl sm:text-5xl text-primary mb-1">
               Results
             </h1>
             <p className="text-muted-foreground text-sm">
-              Group stewardship evaluation complete
+              Group evaluation complete
             </p>
           </div>
 

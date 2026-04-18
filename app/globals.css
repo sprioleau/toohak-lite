@@ -3,7 +3,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Stewardship5 - Dark Linear-style Theme */
+/* toohak-lite - Dark Linear-style Theme */
 :root {
   --background: oklch(0.08 0 0);
   --foreground: oklch(0.98 0 0);
@@ -11,22 +11,22 @@
   --card-foreground: oklch(0.98 0 0);
   --popover: oklch(0.12 0 0);
   --popover-foreground: oklch(0.98 0 0);
-  --primary: oklch(0.65 0.2 265);
-  --primary-foreground: oklch(1 0 0);
+  --primary: oklch(0.65 0.22 295);
+  --primary-foreground: oklch(0.1 0 0);
   --secondary: oklch(0.18 0 0);
   --secondary-foreground: oklch(0.98 0 0);
   --muted: oklch(0.2 0 0);
   --muted-foreground: oklch(0.6 0 0);
-  --accent: oklch(0.65 0.2 265);
-  --accent-foreground: oklch(1 0 0);
+  --accent: oklch(0.65 0.22 295);
+  --accent-foreground: oklch(0.1 0 0);
   --destructive: oklch(0.55 0.22 25);
   --destructive-foreground: oklch(1 0 0);
   --border: oklch(0.22 0 0);
   --input: oklch(0.18 0 0);
-  --ring: oklch(0.65 0.2 265);
+  --ring: oklch(0.65 0.22 295);
   
   /* Chart colors - one for each T */
-  --chart-1: oklch(0.65 0.2 265);
+  --chart-1: oklch(0.65 0.22 295);
   --chart-2: oklch(0.7 0.18 180);
   --chart-3: oklch(0.75 0.15 85);
   --chart-4: oklch(0.65 0.22 340);
@@ -37,16 +37,16 @@
   /* Sidebar (if needed) */
   --sidebar: oklch(0.1 0 0);
   --sidebar-foreground: oklch(0.98 0 0);
-  --sidebar-primary: oklch(0.65 0.2 265);
-  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-primary: oklch(0.65 0.22 295);
+  --sidebar-primary-foreground: oklch(0.1 0 0);
   --sidebar-accent: oklch(0.18 0 0);
   --sidebar-accent-foreground: oklch(0.98 0 0);
   --sidebar-border: oklch(0.22 0 0);
-  --sidebar-ring: oklch(0.65 0.2 265);
+  --sidebar-ring: oklch(0.65 0.22 295);
   
-  /* Custom Stewardship5 tokens */
-  --indigo: oklch(0.65 0.2 265);
-  --indigo-glow: oklch(0.65 0.2 265 / 0.4);
+  /* Custom tokens */
+  --purple: oklch(0.65 0.22 295);
+  --purple-glow: oklch(0.65 0.22 295 / 0.4);
   --surface-1: oklch(0.1 0 0);
   --surface-2: oklch(0.14 0 0);
   --surface-3: oklch(0.18 0 0);
@@ -60,25 +60,24 @@
   --card-foreground: oklch(0.98 0 0);
   --popover: oklch(0.12 0 0);
   --popover-foreground: oklch(0.98 0 0);
-  --primary: oklch(0.65 0.2 265);
-  --primary-foreground: oklch(1 0 0);
+  --primary: oklch(0.65 0.22 295);
+  --primary-foreground: oklch(0.1 0 0);
   --secondary: oklch(0.18 0 0);
   --secondary-foreground: oklch(0.98 0 0);
   --muted: oklch(0.2 0 0);
   --muted-foreground: oklch(0.6 0 0);
-  --accent: oklch(0.65 0.2 265);
-  --accent-foreground: oklch(1 0 0);
+  --accent: oklch(0.65 0.22 295);
+  --accent-foreground: oklch(0.1 0 0);
   --destructive: oklch(0.55 0.22 25);
   --destructive-foreground: oklch(1 0 0);
   --border: oklch(0.22 0 0);
   --input: oklch(0.18 0 0);
-  --ring: oklch(0.65 0.2 265);
+  --ring: oklch(0.65 0.22 295);
 }
 
 @theme inline {
   --font-sans: var(--font-inter), 'Inter', system-ui, sans-serif;
   --font-mono: 'Geist Mono', 'Geist Mono Fallback', monospace;
-  --font-dancing: var(--font-dancing), 'Dancing Script', cursive;
   --font-funnel: var(--font-funnel), 'Funnel Display', sans-serif;
   
   --color-background: var(--background);
@@ -119,8 +118,8 @@
   --color-sidebar-ring: var(--sidebar-ring);
   
   /* Custom colors */
-  --color-indigo: var(--indigo);
-  --color-indigo-glow: var(--indigo-glow);
+  --color-purple: var(--purple);
+  --color-purple-glow: var(--purple-glow);
   --color-surface-1: var(--surface-1);
   --color-surface-2: var(--surface-2);
   --color-surface-3: var(--surface-3);
@@ -135,18 +134,14 @@
   }
 }
 
-/* Custom font classes */
-.font-dancing {
-  font-family: var(--font-dancing), 'Dancing Script', cursive;
-}
-
+/* Custom font class */
 .font-funnel {
   font-family: var(--font-funnel), 'Funnel Display', sans-serif;
 }
 
 /* Glow effect for selected items */
-.glow-indigo {
-  box-shadow: 0 0 20px var(--indigo-glow), 0 0 40px var(--indigo-glow);
+.glow-purple {
+  box-shadow: 0 0 20px var(--purple-glow), 0 0 40px var(--purple-glow);
 }
 
 /* Smooth scrolling */
@@ -156,6 +151,6 @@ html {
 
 /* Selection styling */
 ::selection {
-  background-color: var(--indigo);
+  background-color: var(--purple);
   color: white;
 }

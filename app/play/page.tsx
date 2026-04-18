@@ -48,7 +48,7 @@ export default function PlayJoinPage() {
 
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="font-dancing text-4xl text-primary mb-2">
+          <h1 className="font-funnel text-4xl text-primary mb-2">
             Join Game
           </h1>
           <p className="text-muted-foreground text-sm">

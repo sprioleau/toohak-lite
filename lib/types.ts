@@ -1,4 +1,4 @@
-// Shared types for Stewardship5
+// Shared types for toohak-lite
 
 export type GameState = 'lobby' | 'playing' | 'results';
 
