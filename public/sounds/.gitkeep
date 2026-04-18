@@ -1,0 +1,11 @@
+# Sound Files for Stewardship5
+
+Place the following audio files in this directory:
+
+- `lobby-music.mp3` - Upbeat Kahoot-style loop music for the lobby
+- `tick.mp3` - Short tick sound for countdown timer
+- `submitted.mp3` - Success chime when a player submits their answer
+- `reveal.mp3` - Fanfare for results reveal
+- `countdown.mp3` - Countdown beep sequence
+
+Note: Audio files are optional. The app will work without them.
