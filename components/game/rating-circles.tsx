@@ -29,7 +29,7 @@ export function RatingCircles({ value, onChange, disabled = false }: RatingCircl
             className={cn(
               'relative flex items-center justify-center rounded-full font-funnel font-bold text-xl sm:text-2xl transition-all duration-200',
               'w-14 h-14 sm:w-16 sm:h-16',
-              isSelected && 'glow-indigo bg-primary text-primary-foreground',
+              isSelected && 'glow-purple bg-primary text-primary-foreground',
               !isSelected && 'bg-surface-2 border-2 border-border text-muted-foreground hover:border-primary/50 hover:text-foreground',
               disabled && 'opacity-50 cursor-not-allowed'
             )}

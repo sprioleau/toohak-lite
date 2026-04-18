@@ -44,7 +44,7 @@ export function AnimalAvatar({
       className={cn(
         'relative flex items-center justify-center rounded-xl transition-all duration-200',
         sizeClasses[size],
-        selected && 'glow-indigo ring-2 ring-primary bg-primary/20',
+        selected && 'glow-purple ring-2 ring-primary bg-primary/20',
         disabled && !selected && 'opacity-40 cursor-not-allowed',
         !disabled && onClick && 'cursor-pointer hover:bg-surface-2',
         !selected && !disabled && 'bg-surface-1 border border-border'
